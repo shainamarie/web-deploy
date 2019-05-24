@@ -1,0 +1,92 @@
+profile-mobile.html{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+
+  <div class="profile-name">
+    <div class="profile-picture">
+    	<img src="/static/img/avatarq.png" align="left" />
+    </div>
+    <div class="action-icon">
+    	<!-- <p><a href = "{{ url_for('update_mobile', public_id=json_data.public_id ) }}">edit</a></p> | <a href="#"><p id="myBtn">delete</p></a> -->
+
+    	<!-- <img src="/static/img/settings.png"  width="30" height="30" style="margin: 5px;" align="right" /> -->
+
+      <div class="settings">
+          <img src="/static/img/settings.png" width="30" height="30" style="margin: 5px;" align="right"  />
+          <!-- <h1><a href="#">Evacuation &nbsp &nbsp > </a></h1> -->
+          <div class="dropdown-settings">
+            <a href="{{ url_for('remove_dependent', dependents_id=json_data.dependents_id, home_id=json_data.home_id ) }}">Remove Dependent</a>
+            <a id="myBtn" href="#">Delete Dependent</a>
+      </div>
+
+  </div>
+    	<!-- <img src="/static/img/edits.png" style="margin:5px;" width="20" height="25" align="right" /> -->
+    </div>
+    <h4>{{ json_data.name }}</h4>
+    <span>Dependent</span>      
+  </div>
+
+
+  <div class="information-holder">
+  	<h4>USER INFORMATION</h4>
+  	<hr>
+  	<h5>NAME:</h5> <p>{{ json_data.name }}</p> <br/>
+  	<h5>ADDRESS:</h5> <p>{{ json_data.address }}</p> <br/>
+  	<h5>GENDER:</h5> <p>{{ json_data.gender}}</p> <br/>
+  	<h5>AGE:</h5> <p>{{ json_data.age }}</p> <br/>
+  	<h5>EDUCATIONAL ATTAINMENT:</h5> <p>{{ json_data.educ_attainment }}</p> <br/>
+  	<h5>OCCUPATION:</h5> <p>{{ json_data.occupation }}</p> <br/>
+  </div>
+
+  <div class="change-picture">
+  	<h4>CHANGE PICTURE</h4>
+  	<hr>
+  	<img src="/static/img/avatarq.png" align="left" />
+  	<form name="myWebForm" action="mailto:youremail@email.com" method="post">
+		<input type="file" name="uploadField" />
+	</form>
+  </div>
+
+<div id="myModal" class="modal">
+      <!-- Modal content -->
+        <div class="modal-content" >
+          <span class="close">&times;</span>
+          <p>Are you sure to delete this user?</p>
+          <div style="position: relative; display: flex; justify-content: center;" >
+          <button style="background-color:#de0020;"><a href="{{ url_for('delete_dependent', home_id=json_data.home_id, dependents_id=json_data.dependents_id) }}">Yes</a></button>
+          <button style="background-color: #0bbc94;"><a href="{{ url_for('viewprofile_dependent', name=json_data.name, dependents_id=json_data.dependents_id) }}" >No</a></button>
+        </div>
+  </div> 
+
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script> 
+
+{% endblock %}

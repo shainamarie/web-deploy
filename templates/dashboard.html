@@ -1,0 +1,132 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<div class="content-holder">
+
+  <div style="height: 75px;" class="title">
+    <h4>DASHBOARD</h4> 
+  </div>
+
+
+  <div style="height: 250px; margin-top: 50px; border-top: 5px solid #9ca4a9; border-bottom: 5px solid #9ca4a9; background-color: #4a525b;" class="information-holder">
+    <h4 style="color: #cdcdcd;">Statistics and Frequency</h4>
+    <div id="bar-chart" style="height: 168px; margin-top: 0px;">
+  <div class="graph" style="height: 154px;">
+    <ul class="x-axis" style="height: 6px;">
+      <li><span>Gradeschooler</span></li>
+      <li><span>Teens</span></li>
+      <li><span>Young Adult</span></li>
+      <li><span>Adult</span></li>
+    </ul>
+    <ul class="y-axis">
+      <li style="height: 33px;"><span>100</span></li>
+      <li style="height: 33px;"><span>75</span></li>
+      <li style="height: 33px;"><span>50</span></li>
+      <li style="height: 33px;"><span>25</span></li>
+      <li style="height: 33px;"><span>0</span></li>
+    </ul>
+    <div class="bars" style="height: 135px; z-index: 1;">
+      <div class="bar-group">
+        {% for i in female_age %}
+        {% for j in male_age %}
+
+        <div class="bar bar-1 stat-1" style="height: {{ i.grade_schooler }}0%;">  
+          <span></span>
+        </div>
+        <div class="bar bar-2 stat-2" style="height: {{ j.grade_schooler }}0%;">
+          <span></span>
+        </div>
+        
+      </div>
+      <div class="bar-group">
+        <div class="bar bar-4 stat-1" style="height: {{ i.teens }}0%;">
+          <span></span>
+        </div>
+        <div class="bar bar-5 stat-2" style="height: {{ j.teens }}0%;">
+          <span></span>
+        </div>
+        
+      </div>
+      <div class="bar-group">
+        <div class="bar bar-7 stat-1" style="height: {{ i.young_adult }}%;">
+          <span></span>
+        </div>
+        <div class="bar bar-8 stat-2" style="height: {{ j.young_adult }}%;">
+          <span></span>
+        </div>
+        </div>
+      <div class="bar-group">
+        <div class="bar bar-10 stat-1" style="height: {{ i.adult }}%;">
+          <span></span>
+        </div>
+        <div class="bar bar-11 stat-2" style="height: {{ j.adult }}%;">
+          <span></span>
+        </div>
+        {% endfor %}    
+        {% endfor %}    
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+  </div>
+
+
+  <div style="height: 250px; margin-top: 50px; border-top: 5px solid #9ca4a9; border-bottom: 5px solid #9ca4a9; background-color: #4a525b;" class="information-holder2">
+    <h4 style="color: #cdcdcd;">Weather</h4>
+    <hr style="margin-top: 0px; margin-bottom: 10px;">
+    <div class="weather-container">
+      <div class="icon"><img src="http://openweathermap.org/img/w/{{ weather_icon }}.png"></div>
+      <h5 style="color: #cdcdcd;">{{ city }} City</h5>
+      <h5 style="color: #cdcdcd;">{{ celcius }} &#8451; - {{ weather }} </h5>
+    </div>
+  </div>
+
+  <div style="border-top: 5px solid #9ca4a9; border-bottom: 5px solid #9ca4a9;" class="holder">
+    <div id="map_div" style="width: 100%; height: 450px;"></div>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+      google.charts.load("current", {
+        "packages":["map"],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        "mapsApiKey": "AIzaSyAayoLLtuuXjGtgaxIURWpfzRrGDZ1KgVc"
+    });
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        
+        // myvar = '{{ json_data.data|safe }}';
+        // var parsed = JSON.parse('{{ json_data.data|safe }}');
+
+        // var lat = document.createElement(parsed[0].latitude);
+        // var long = document.createElement(parsed[0].longitude);
+        // var name = document.createElement(parsed[0].name);
+
+        var data = google.visualization.arrayToDataTable([
+          ['Lat', 'Long', 'Name'],
+          {% for evac in json_data.data %}
+          [{{evac.latitude}}, {{evac.longitude}}, '{{evac.name}}'],
+          {% endfor %}
+        ]);
+
+        
+
+        var map = new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(data, {
+          showTooltip: true,
+          showInfoWindow: true
+        });
+        
+      }
+
+    </script>
+  
+
+{% endblock %}

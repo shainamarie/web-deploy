@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>San Ligtas</title>
+
+</head>
+<body>
+
+<div class="header">
+  <h1>San Ligtas</h1>
+   <form class="search-button" action="#">
+    <input type="text" placeholder="Search...">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <ul>
+    <li><a href="#">About Us</a></li>
+     <li><a href="#">Contact Us</a></li>
+  </ul>
+
+
+</div>
+
+<div id="navbar">
+  <ul>
+    <li><a href="#">HOME</a></li>
+    <li><a href="#">ALERTS</a></li>
+    <li><a href="#">EVACUATION CENTER</a></li>
+    <li><a href="#">RELIEF UPDATES</a></li>
+    <li><a href="#">WEATHER</a></li>
+  </ul>
+</div>
+
+
+<div class="content">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<div class="footer">
+	<p>All Rights Reserved © 2019</p>
+</div>
+
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky")
+  }
+}
+</script>
+
+
+
+</body>
+</html>

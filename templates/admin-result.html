@@ -1,0 +1,61 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+
+<div class="content-holder">
+
+	<div class="title">
+		<h4>USER MANAGEMENT</h4>
+		<span>Home / Users / Admin / {{name}} / Search /<b> Result </b></span>
+
+    <div class="search-container">
+      <form action="{{ url_for('search_evacuee', name=name, public_id=public_id) }}" method="post">
+        <input type="text" name="keyword" placeholder="Search user.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+	</div>
+
+
+<div class="holder">
+<div class="table">
+<table id="customers">	
+
+	<div class="column">
+		<tr>
+		<th>USERNAME</th>
+        <th>NAME</th>
+        <th>ROLE</th>
+        <th>GENDER</th>
+        <th>ADD</th>
+		  </tr>
+	</div>
+  {% for user in json_data.data %}
+  <tr>
+    <td> {{ user.username }}</td>
+    <td> {{ user.first_name }} {{ user.lastname }}</td>
+    <td> {{ user.role }}</td>
+    <td> {{ user.gender }}</td>
+
+
+    <td style="position: relative; display: flex; ">
+      <a href = "{{ url_for('assign_searched_admin', username=user.username, name=name, public_id=public_id) }}"><img src="/static/img/add-user.png" style="margin:5px;" width="25" height="25"  /></a>
+      
+    </td>
+
+  </tr>
+  
+ 
+ {% endfor %}
+</table>
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

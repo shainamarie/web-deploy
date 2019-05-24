@@ -1,0 +1,71 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+
+<div class="content-holder">
+
+	<div class="title">
+		<h4>RELIEF UPDATES</h4> 
+		<span>Home / Updates / <b> Relief </b></span>
+
+     <div class="search-container">
+      <form action="{{ url_for('search_center') }}" method="post">
+        <input style="z-index: -5;" type="text" name="keyword" placeholder="Search center.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+     
+	</div>
+
+<div class="action-holder">
+  <a href="/add/user/admin"><img src="/static/img/goods.png" width="30" height="30" style="margin: 5px;" align="left"  /></a>
+</div>
+
+<div class="holder">
+<div class="table">
+<table id="customers">	
+
+	<div class="column">
+		<tr>
+		  	<th>CENTER</th>
+        <th>NO. OF GOODS</th>
+        <th>VIEW</th>
+		  </tr>
+	</div>
+  {% for user in json_data.data %}
+  <tr>
+    <td> {{ user.center }}</td>
+    <td> {{ user.number_goods }}</td>
+ 
+
+    <td style="position: relative; display: flex; ">
+      <a href = "{{ url_for('view_spec_center', public_id=user.center_public_id, name=user.center) }}"><img src="/static/img/web.png" style="margin:5px;" width="25" height="25"  /></a>
+      
+    </td>
+
+  </tr>
+  <div id="myModal" class="modal">
+      <!-- Modal content -->
+        <div class="modal-content" >
+          <span class="close">&times;</span>
+          <p>Are you sure to delete this user?</p>
+          <div style="position: relative; display: flex; justify-content: center;" >
+          <button style="background-color:#de0020;"><a href="{{ url_for('delete_admin', public_id=public_id) }}">Yes</a></button>
+          <button style="background-color: #0bbc94;"><a href="{{ url_for('viewuser') }}">No</a></button>
+        </div>
+  </div> 
+ 
+ {% endfor %}
+</table>
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

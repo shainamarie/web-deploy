@@ -1,0 +1,56 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+
+<div class="content-holder">
+
+
+	<div class="title">
+		<h4>EVACUATION CENTER</h4>
+		<span>Home / Evacuation / View / <b> {{ name }} </b> </span> 
+		<div class="action-icon">
+		<span><p><a href = "{{ url_for('update_center', public_id=public_id ) }}">edit</a></p> | <a href="#"><p id="myBtn">delete</p></a>
+</span>
+		</div>
+	</div>
+
+	
+<div style="float: left;" class="search-container">
+      
+      <form action="{{ url_for('search_admin', name=name, public_id=public_id) }}" method="post">
+        <input style="margin-top: 20px; margin-left: 20px;" type="text" name="keyword" placeholder="Search user.." name="search">
+        <button style="margin-top: 20px;" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+<br>
+<br>
+
+  <div class="information-holder">
+  	<h4>ASSIGN ADMIN</h4>
+  	<hr>
+  	<div class="add-form">
+      <form action="{{ url_for('assign_admin', name=name, public_id=public_id ) }}" method="post" xmlns="http://www.w3.org/1999/html">
+        <div class="form1">
+          <!-- <label for="name"><b>Name</b></label> -->
+          <input type="text" placeholder="Center Admin" name="center_admin" required>
+            
+        </div>
+
+        <div class="submit-button">  
+          <button style="background-color: #1ab394;" type="submit">Submit</button>
+          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+
+
+</div>
+
+
+</div>
+
+
+
+{% endblock %}

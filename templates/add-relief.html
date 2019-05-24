@@ -1,0 +1,43 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+	<div class="title">
+		<h4>RELIEF UPDATES</h4> 
+    <span>Home / Updates / Relief / <b> Add </b> </span>
+
+
+    <div class="search-container">
+      <form action="{{ url_for('search_user') }}" method="post">
+        <input type="text" name="keyword" placeholder="Search user.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+	</div>
+
+	<div class="information-holder">
+		<h4>Relief Goods</h4>
+    <hr>
+	
+    <div class="add-form">
+  		<form action="{{ url_for('add_relief', name=name, public_id=public_id) }}" method="post" xmlns="http://www.w3.org/1999/html">
+        <div class="form1">
+          <!-- <label for="username"><b>Username</b></label> -->
+          <input type="number" placeholder="" name="number_goods" required>
+            
+          <!-- <label for="email"><b>Email</b></label> -->
+          <!-- <input type="text" placeholder="Email" name="email" required> -->
+        </div>
+
+        <div class="submit-button">  
+          <button style="background-color: #1ab394;" type="submit">Submit</button>
+          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate"><a href="{{ url_for('view_spec_center', name=name, public_id=public_id) }}">Cancel</a></button>
+        </div>
+      </form>
+     </div>
+
+     
+	</div>
+</div>
+
+
+{% endblock %}

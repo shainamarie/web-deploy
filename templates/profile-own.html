@@ -1,0 +1,45 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+
+  <div class="profile-name">
+    <div class="profile-picture">
+    	<img src="/static/img/avatarq.png" align="left" />
+    </div>
+    <div class="action-icon">
+    	<p><a href = "{{ url_for('update_user',public_id=json_data.public_id) }}">edit</a> </p>
+
+    	<!-- <img src="/static/img/deletes.png"  width="20" height="25" style="margin: 5px;" align="right" />
+    	<img src="/static/img/edits.png" style="margin:5px;" width="20" height="25" align="right" /> -->
+    </div>
+    <h4>{{ json_data.first_name }} {{ json_data.last_name }}</h4>
+    <span>{{ json_data.role }}</span>      
+  </div>
+
+
+  <div class="information-holder">
+  	<h4>ADMIN INFORMATION</h4>
+  	<hr>
+  	<h5>NAME:</h5> <p>{{ json_data.first_name }} {{ json_data.last_name }}</p> <br/>
+  	<h5>USERNAME:</h5> <p>{{ json_data.username }}</p> <br/>
+  	<h5>EMAIL ADRESS:</h5> <p>{{ json_data.email}}</p> <br/>
+  	<h5>ROLE:</h5> <p>{{ json_data.role }}</p> <br/>
+  	<h5>GENDER:</h5> <p>{{ json_data.gender }}</p> <br/>
+  </div>
+
+  <div class="change-picture">
+  	<h4>CHANGE PICTURE</h4>
+  	<hr>
+  	<img src="/static/img/avatarq.png" align="left" />
+  	<form name="myWebForm" action="mailto:youremail@email.com" method="post">
+		<input type="file" name="uploadField" />
+	</form>
+  </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

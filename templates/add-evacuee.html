@@ -1,0 +1,78 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+	<div class="title">
+		<h4>USER MANAGEMENT</h4>
+		<span>Home / Users / Evacuee / <b> Add </b></span>
+
+    <div class="search-container">
+      <form action="{{ url_for('search_user') }}" method="post">
+        <input type="text" name="keyword" placeholder="Search user.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+	</div>
+
+	<div class="information-holder">
+		<h4>User Information</h4>
+    <hr>
+	
+    <div class="add-form">
+  		<form action="{{ url_for('add_evacuee') }}" method="post" xmlns="http://www.w3.org/1999/html">
+        <div class="form1">
+          <!-- <label for="username"><b>Username</b></label> -->
+          <input type="text" placeholder="Name" name="name" required>
+            
+          <!-- <label for="email"><b>Email</b></label> -->
+          <input type="text" placeholder="Address" name="address" required>
+        </div>
+
+        <div class="form2">
+          <!-- <label for="first_name"><b>First Name</b></label> -->
+          <input type="number" placeholder="Age" name="age" required>
+             
+          <!-- <label for="last_name"><b>Last name</b></label> -->
+          <input type="text" placeholder="Religion" name="religion" required>
+        </div>
+
+         <div class="form4">
+          <!-- <label for="first_name"><b>First Name</b></label> -->
+          <input type="text" placeholder="Civil Status" name="civil_status" required>
+             
+          <!-- <label for="last_name"><b>Last name</b></label> -->
+          <input type="text" placeholder="Educational Attainment" name="educ_attainment" required>
+        </div>
+
+        <div class="form3">
+          <!-- <label for="role"><b>Role</b></label> -->
+          
+          <input type="text" placeholder="Occupation" name="occupation" required>
+          <!-- <label for="password"><b>Gender</b></label> -->
+          <select name="gender">
+            <option>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div class="submit-button">  
+          <button style="background-color: #1ab394;" type="submit">Submit</button>
+          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate"><a href="{{ url_for('viewevacuees') }}">Cancel</a></button>
+        </div>
+      </form>
+     </div>
+
+     
+	</div>
+  <div class="change-picture">
+      <h4>Add Picture</h4>
+      <hr>
+      <img src="/static/img/avatarq.png" align="left" />
+      <form name="myWebForm" action="mailto:youremail@email.com" method="post">
+      <input type="file" name="uploadField" />
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

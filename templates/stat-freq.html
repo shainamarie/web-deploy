@@ -1,0 +1,86 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<div class="content-holder">
+
+  <div style="height: 72px;" class="title">
+    <h4>STATISTICS AND FREQUENCY</h4> 
+  </div>
+
+  
+  <div style="height: 400px; width: 90%; margin-top: 30px; margin-left: 50px;  border-top: 5px solid #9ca4a9; border-bottom: 5px solid #9ca4a9; background-color: #4a525b;" class="information-holder">
+    <div id="bar-chart" style="">
+  <div class="graph" style="width: 700px;">
+    <ul class="x-axis" style="">
+      <li><span>Gradeschooler</span></li>
+      <li><span>Teens</span></li>
+      <li><span>Young Adult</span></li>
+      <li><span>Adult</span></li>
+    </ul>
+    <ul class="y-axis" style="">
+      <li style=""><span>100</span></li>
+      <li style=""><span>75</span></li>
+      <li style=""><span>50</span></li>
+      <li style=""><span>25</span></li>
+      <li style=""><span>0</span></li>
+    </ul>
+    <div class="bars" style="">
+      <div class="bar-group">
+        {% for i in female_age %}
+        {% for j in male_age %}
+
+        <div class="bar bar-1 stat-1" style="height: {{ i.grade_schooler }}0%;">  
+          <span></span>
+        </div>
+        <div class="bar bar-2 stat-2" style="height: {{ j.grade_schooler }}0%;">
+          <span></span>
+        </div>
+        
+      </div>
+      <div class="bar-group">
+        <div class="bar bar-4 stat-1" style="height: {{ i.teens }}0%;">
+          <span></span>
+        </div>
+        <div class="bar bar-5 stat-2" style="height: {{ j.teens }}0%;">
+          <span></span>
+        </div>
+        
+      </div>
+      <div class="bar-group">
+        <div class="bar bar-7 stat-1" style="height: {{ i.young_adult }}%;">
+          <span></span>
+        </div>
+        <div class="bar bar-8 stat-2" style="height: {{ j.young_adult }}%;">
+          <span></span>
+        </div>
+        </div>
+      <div class="bar-group">
+        <div class="bar bar-10 stat-1" style="height: {{ i.adult }}%;">
+          <span></span>
+        </div>
+        <div class="bar bar-11 stat-2" style="height: {{ j.adult }}%;">
+          <span></span>
+        </div>
+        {% endfor %}    
+        {% endfor %}    
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+  </div>
+
+
+<h4 style="margin-left: 30px; color: #6c7884; font-size: 17px;">LEGEND:</h4>
+  <span style="margin-left: 60px; color: #6c7884;">Female<div style="background-color: #ff4500;" class="square"></div></span>
+  <span style="margin-left: 60px; color: #6c7884;">Male<div style="background-color: #b8f123;" class="square"></div></span>
+
+</div>
+
+
+
+
+{% endblock %}

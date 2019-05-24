@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/static/css/mainadmin.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="/static/css/plot.css" />
+
+<title>San Ligtas | Main Admin</title>
+
+</head>
+<style>
+
+</style>
+<body>
+
+<div id="navbar">
+  <ul>
+  	<li><div class="logout"><a href="{{ url_for('logout') }}">Log out</a></div></li>
+  	<li><img src="/static/img/logout.png" align="right"/></li>
+  	<li><div class="welcome">Welcome, {{ session['user'] }}</div></li>
+
+</div>
+
+<div class="w3-sidebar w3-light-#343a40; w3-bar-block" style="width: 225px; z-index: 5; background-color:#343a40; position: fixed; top:0;">
+	<div class="name">
+		<img src="/static/img/avatarq.png" align="left" />
+		<h1><a href="{{ url_for('ownprofile') }}">{{ session['first_name'] }} {{ session['last_name'] }}</a></h1>
+		<p>{{ session['role'] }}</p>
+	</div>
+
+	<div class="dashboard">
+		<img src="/static/img/dashboard.png" align="left"  />
+		<h1><a href="{{ url_for('mainadminhome', username=session['user'], first_name=session['first_name'], last_name=session['last_name']) }}">Dashboard</a></h1>
+	</div>
+
+	<div class="users">
+		<img src="/static/img/users.png" align="left" />
+		<h1><a href="#">Users &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp > </a></h1>
+		<div class="dropdown">
+			<a href="/view/admin">Admin</a>
+			<a href="/view/mobile">Mobile</a>
+			<a href="/view/evacuees">Evacuee</a>
+		</div>
+	</div>
+	
+
+	<div class="messages">
+		<img src="/static/img/messages.png" align="left" />
+		<h1><a href="#">Messages</a></h1>
+	</div>
+	
+	<div class="updates">
+		<img src="/static/img/updates.png" align="left" />
+		<h1><a href="/relief/updates">Updates</a></h1>
+	</div>
+
+	<div class="alerts">
+		<img src="/static/img/alerts.png" align="left" />
+		<h1><a href="#">Alerts </a></h1>
+	</div>
+
+	<div class="evacs">
+		<img src="/static/img/evacs.png" align="left" />
+		<h1><a href="#">Evacuation &nbsp &nbsp > </a></h1>
+		<div class="dropdown">
+			<a href="/view/center">View Center</a>
+			<a href="/add/center">Add Center</a>
+			<a href="/view/center">Assign Users</a>
+		</div>
+	</div>
+
+	<div class="maps">
+		<img src="/static/img/maps.png" align="left" />
+		<h1><a href="/maps">Map</a></h1>
+	</div>
+
+	<div class="stats">
+		<img src="/static/img/stats.png" align="left" />
+		<h1><a href="/statistics-frequency">Statistics</a></h1>
+	</div>
+
+	<div class="webs">
+		<img src="/static/img/webs.png" align="left" />
+		<h1><a href="/home">View Website</a></h1>
+	</div>
+
+</div>
+
+<div class="content">
+	{% block content %}
+ 	{% endblock %}
+
+</div>
+
+
+</body>
+</html>

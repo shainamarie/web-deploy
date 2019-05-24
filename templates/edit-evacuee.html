@@ -1,0 +1,59 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+  <div class="title">
+    <h4>USER MANAGEMENT</h4>
+    <span>Home / Users / Evacuee / <b> Update </b></span>
+  </div>
+
+  <div class="form-holder">
+    <h2>User Information</h2>
+  
+    <div class="add-form">
+      <form action="{{ url_for('update_evacuee', home_id=home_id) }}" method="post" xmlns="http://www.w3.org/1999/html">
+        <div class="form1">
+          <!-- <label for="username"><b>Username</b></label> -->
+          <input type="text" placeholder="{{ name }}" name="name" required>
+            
+          <!-- <label for="email"><b>Email</b></label> -->
+          <input type="text" placeholder="{{ address }}" name="address" required>
+        </div>
+
+        <div class="form2">
+          <!-- <label for="first_name"><b>First Name</b></label> -->
+          <input type="text" placeholder="{{ age }}" name="age" required>
+             
+          <!-- <label for="last_name"><b>Last name</b></label> -->
+          <input type="text" placeholder="{{ religion }}" name="religion" required>
+        </div>
+
+        <div class="form3">
+          <!-- <label for="first_name"><b>First Name</b></label> -->
+          <input type="text" placeholder="{{ civil_status }}" name="civil_status" required>
+             
+          <!-- <label for="last_name"><b>Last name</b></label> -->
+          <input type="text" placeholder="{{ educ_attainment }}" name="educ_attainment" required>
+        </div>
+
+         <div class="form3">
+          <!-- <label for="first_name"><b>First Name</b></label> -->
+          <input type="text" placeholder="{{ occupation }}" name="occupation" required>
+            
+          <!-- <label for="password"><b>Gender</b></label> -->
+          <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+
+        <div class="submit-button">  
+          <button style="background-color: #1ab394;" type="submit">Submit</button>
+          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate"><a href="{{ url_for('viewprofile_evacuee', name = "{{name}}" , home_id=home_id) }}">Cancel</a></button>
+        </div>
+      </form>
+     </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- IMAGE SLIDER/ CAROUSEL/ NEWS -->
+<!-- NEEDS TO BE LOOP -->
+
+<div class="w3-display-container mySlides" style="position: relative; z-index: -5;">
+  <img src="static/img/carousel1.png" style="width:100%">
+  <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black" style="width: 100%;opacity: 0.8; text-align: center;"><a href="#" style="text-decoration: none;">
+  	Notice of Public Meeting - Satellite Voice and Data Services for VSAT</a>
+  </div>
+</div>
+
+<div class="w3-display-container mySlides" style="position: relative; z-index: -5;">
+  <img src="static/img/carousel2.png" style="width:100%">
+  <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black" style="width: 100%;opacity: 0.8; text-align: center;"><a href="#" style="text-decoration: none;">
+    DCF To Initiate Federal Disaster Snap Food Assistance Program In 12 Counties</a>
+  </div>
+</div>
+
+<div class="w3-display-container mySlides" style="position: relative; z-index: -5;">
+  <img src="static/img/carousel3.png" style="width:100%">
+  <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black" style="width: 100%;opacity: 0.8; text-align: center;"><a href="#" style="text-decoration: none;">
+    Governor Ron DeSantis Announces Additional Reimbursement for Florida</a>
+  </div>
+</div>
+
+<!-- END OF IMAGE SLIDER -->
+
+<!-- FEATURES -->
+
+<br>
+<br>
+<div class="features">
+
+<div class="tab">
+	<button class="tablinks" onclick="openMenu(event, 'Map')">MAP</button>
+	<button class="tablinks" onclick="openMenu(event, 'Alerts')">ALERTS</button>
+	<button class="tablinks" onclick="openMenu(event, 'Weather')">WEATHER</button>	
+</div>
+
+<div id="Map" class="tabcontent" style="display: block;">
+	<h3>Map</h3>
+	<p>This feature shows the nearest and all possible evacutaion centers available, and shows how critical area during a calamity.</p>
+	<div id="map"></div>
+</div>
+<div id="Alerts" class="tabcontent">
+	<h3>Alerts</h3>
+	<p>This feature gives information to the people such as announcements related in disaster risk and management.</p>
+	<div class="alert-board">
+		<div id="alert1">
+			<div class="date">03/05/19</div>
+			<center><h5>Notice of Public Meeting - Satellite Voice and Data Services for VSAT</h5><span>Click more...</span></center>
+
+		</div>
+		<div id="alert2">
+			<div class="date">03/09/19</div>
+			<center><h5>DCF To Initiate Federal Disaster Snap Food Assistance Program In 12 Counties</h5><span>Click more...</span></center>
+		</div>
+		<div id="alert3">
+			<div class="date">03/14/19</div>
+			<center><h5>Governor Ron DeSantis Announces Additional Reimbursement for Florida</h5><span>Click more...</span></center>
+		</div>
+	</div>
+</div>
+<div id="Weather" class="tabcontent">
+	<h3>Weather</h3>
+	<p>This feature provides real-time weather update.</p>
+	<div class="weather-container">
+		<div class="icon"><img src="http://openweathermap.org/img/w/{{ weather_icon }}.png"></div>
+		<b><p>{{ city }} City</p></b>
+		<center><b><h4>{{ celcius }} &#8451; - {{ weather }} </h4></b></center>
+	</div>
+</div>
+</div>
+ 
+<!-- END OF FEATURES -->
+
+
+<!-- ANNOUNCEMENTS -->
+
+<div class="announcements">
+<h1>ANNOUNCEMENTS</h1>
+
+	<div class="boards">
+		<div id="board1">
+			<img src="static/img/board1.jpg">
+			<div class="date2">03/05/19</div>
+			<center><h5>Notice of Public Meeting - Satellite Voice and Data Services for VSAT</h5></center>
+
+
+			
+			
+		</div>
+		<div id="board2">
+			<img src="static/img/board2.jpg">
+			<div class="date2">03/13/19</div>
+			<center><h5>DCF To Initiate Federal Disaster Snap Food Assistance Program In 12 Counties</h5></center>
+
+		</div>
+		<div id="board3">
+			<img src="static/img/board3.jpg">
+			<div class="date2">03/17/19</div>
+			<center><h5>Governor Ron DeSantis Announces Additional Reimbursement for Florida</h5></center>
+		
+		</div>
+
+		<div id="board4">
+			<img src="static/img/board4.jpg">
+			<div class="date2">03/21/19</div>
+			<center><h5>DEM Announces Receipt of $343 Million in Citrus Grant Funds, Workshops to Assist Farmers to Apply</h5></center>
+		</div>
+	</div>	
+<a href="#">Click here for more >>></a>
+</div>
+
+<hr>
+
+<!-- END OF ANNOUNCEMENT -->
+
+
+<script>
+	var slideIndex = 0;
+	carousel();
+
+	function carousel() {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none"; 
+	  }
+	  slideIndex++;
+	  if (slideIndex > x.length) {slideIndex = 1} 
+	  x[slideIndex-1].style.display = "block"; 
+	  setTimeout(carousel, 5000); // Change image every 2 seconds
+	}
+</script>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+
+
+<script>
+	function openMenu(evt, menuName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace("active", "");
+		}
+		document.getElementById(menuName).style.display = "block";
+		evt.currentTarget.className += "active";
+	}
+</script>
+
+<script>
+// Initialize and add the map
+	function initMap() {
+	  // The location of Uluru
+	  var uluru = {lat: 8.228, lng: 124.2452};
+	  // The map, centered at Uluru
+	  var map = new google.maps.Map(
+	      document.getElementById('map'), {zoom: 10, center: uluru});
+	  // The marker, positioned at Uluru
+	  var marker = new google.maps.Marker({position: uluru, map: map});
+	}
+</script>
+  
+<!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOeYMvF7kPJ7ZcAjOVWiRA8PjCk5E_TsM&callback=initMap">
+</script> -->
+        
+{% endblock %}

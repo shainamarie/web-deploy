@@ -1,0 +1,52 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+	<div class="title">
+		<h4>EVACUATION CENTER</h4>
+		<span>Home / Evacuation / <b> Add </b></span>
+
+    <div class="search-container">
+      <form action="{{ url_for('search_center') }}" method="post">
+        <input type="text" name="keyword" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+
+	</div>
+
+	<div class="information-holder">
+		<h4>Evacuation Center</h4>
+    <hr>
+	
+    <div class="add-form">
+  		<form action="{{ url_for('add_center') }}" method="post" xmlns="http://www.w3.org/1999/html">
+        <div class="form1">
+          <!-- <label for="name"><b>Name</b></label> -->
+          <input type="text" placeholder="Center Name" name="name" required>
+            
+          <!-- <label for="address"><b>Address</b></label> -->
+          <input type="text" placeholder="Center Address" name="address" required>
+
+          <!-- <label for="capacity"><b>Capacity</b></label> -->
+          <input type="number" placeholder="Center Capacity" name="capacity" required>
+        </div>
+
+        <div class="submit-button">  
+          <button style="background-color: #1ab394;" type="submit">Submit</button>
+          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate"><a href="{{ url_for('view_center') }}">Cancel</a></button>
+        </div>
+      </form>
+    </div>
+	</div>
+  <div class="change-picture">
+      <h4>Add Picture</h4>
+      <hr>
+      <img src="/static/img/avatarq.png" align="left" />
+      <form name="myWebForm" action="mailto:youremail@email.com" method="post">
+      <input type="file" name="uploadField" />
+      </form>
+    </div>
+</div>
+
+{% endblock %}

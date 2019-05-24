@@ -1,0 +1,66 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+	<div class="profile-name">
+	    <div class="profile-picture">
+	    	<img src="/static/img/avatarq.png" align="left" />
+	    </div>
+	    <div class="action-icon">
+	    <div class="settings">
+	          <img src="/static/img/settings.png" width="30" height="30" style="margin: 5px;" align="right"  />
+	          <div class="dropdown-settings">
+	            <a href="{{ url_for('update_evacuee', home_id=home_id ) }}">Edit Profile</a>
+	            <a id="myBtn" href="#">Delete Profile</a>
+	    </div>
+  	</div>
+    	<!-- <img src="/static/img/edits.png" style="margin:5px;" width="20" height="25" align="right" /> -->
+    </div>
+    <h4>{{ name }}</h4>
+    <span>Evacuee</span>     
+  </div>
+
+
+
+
+	<div class="information-holder">
+		<h4>Dependent Information</h4>
+    <hr>
+	
+    <div class="add-form">
+  		<form action="{{ url_for('add_dependent', name=name, home_id=home_id) }}" method="post" xmlns="http://www.w3.org/1999/html">
+        <div class="form1">
+          <!-- <label for="name"><b>Name</b></label> -->
+          <input type="text" placeholder="Name" name="name" required>
+            
+          <!-- <label for="address"><b>Address</b></label> -->
+          <input type="text" placeholder="Address" name="address" required>
+
+          <!-- <label for="capacity"><b>Capacity</b></label> -->
+          <select name="gender">
+            <option>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>          <input type="number" placeholder="Age" name="age" required>
+          <input type="text" placeholder="Education Attainment" name="educ_attainment" required>
+          <input type="text" placeholder="Occupation" name="occupation" required>
+        </div>
+
+        <div class="submit-button">  
+          <button style="background-color: #1ab394;" type="submit">Submit</button>
+          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate"><a href="{{ url_for('viewevacuees') }}">Cancel</a></button>
+        </div>
+      </form>
+    </div>
+	</div>
+
+  <div class="change-picture">
+      <h4>Add Picture</h4>
+      <hr>
+      <img src="/static/img/avatarq.png" align="left" />
+      <form name="myWebForm" action="mailto:youremail@email.com" method="post">
+      <input type="file" name="uploadField" />
+      </form>
+    </div>
+</div>
+
+{% endblock %}

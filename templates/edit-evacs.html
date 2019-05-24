@@ -1,0 +1,35 @@
+{% extends "mainadmin-base.html" %}
+{% block content %}
+<div class="content-holder">
+  <div class="title">
+    <h4>EVACUATION CENTER</h4>
+    <span>Home / Evacuation / <b> Update </b></span>
+  </div>
+
+  <div class="form-holder">
+    	<h2>Center Information</h2>
+
+    	<div class="add-form">
+	  		<form action="{{ url_for('update_center', public_id=public_id) }}" method="post" xmlns="http://www.w3.org/1999/html">
+	        <div class="form1">
+	          <!-- <label for="name"><b>Name</b></label> -->
+	          <input type="text" placeholder="{{ name }}" name="name" required>
+	            
+	          <!-- <label for="address"><b>Address</b></label> -->
+	          <input type="text" placeholder="{{ address }}" name="address" required>
+
+	          <!-- <label for="capacity"><b>Capacity</b></label> -->
+	          <input type="number" placeholder="{{ capacity }}" name="capacity" required>
+	        </div>
+
+	        <div class="submit-button">  
+	          <button style="background-color: #1ab394;" type="submit">Submit</button>
+	          <button style="background-color: #0bbc94;" type="submit" value="Cancel" formnovalidate="formnovalidate"><a href="{{ url_for('view_spec_center', name="{{ name }}", public_id=public_id) }}">Cancel</a></button>
+	        </div>
+	      </form>
+	    </div>
+  
+  </div>
+</div>
+
+{% endblock %}
